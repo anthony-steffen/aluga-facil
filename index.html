@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aluga Facil</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">AF</span>
+        <div>
+          <strong>Aluga Facil</strong>
+          <span>Imoveis para morar melhor</span>
+        </div>
+      </div>
+
+      <nav class="main-tabs" aria-label="Areas do sistema">
+        <button class="tab-button active" type="button" data-view="tenant">Inquilino</button>
+        <button class="tab-button" type="button" data-view="landlord">Locador</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro-band">
+        <div class="intro-copy">
+          <p class="eyebrow">Aluguel residencial</p>
+          <h1>Encontre e anuncie imoveis com clareza.</h1>
+          <p>
+            Uma experiencia direta para quem procura um novo lar e para quem precisa
+            cadastrar imoveis disponiveis para locacao.
+          </p>
+        </div>
+        <div class="intro-stats" aria-label="Indicadores do sistema">
+          <div>
+            <strong id="stat-total">0</strong>
+            <span>imoveis</span>
+          </div>
+          <div>
+            <strong id="stat-cities">0</strong>
+            <span>cidades</span>
+          </div>
+          <div>
+            <strong id="stat-average">R$ 0</strong>
+            <span>media mensal</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="tenant-view" class="view-section active" aria-labelledby="tenant-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Para inquilinos</p>
+            <h2 id="tenant-title">Imoveis disponiveis</h2>
+          </div>
+          <span id="result-count" class="result-count">0 resultados</span>
+        </div>
+
+        <div class="filters-bar" aria-label="Filtros de busca">
+          <label>
+            Cidade
+            <select id="city-filter">
+              <option value="">Todas</option>
+            </select>
+          </label>
+          <label>
+            Tipo
+            <select id="type-filter">
+              <option value="">Todos</option>
+              <option value="Apartamento">Apartamento</option>
+              <option value="Casa">Casa</option>
+              <option value="Kitnet">Kitnet</option>
+              <option value="Studio">Studio</option>
+            </select>
+          </label>
+          <label>
+            Valor maximo
+            <input id="price-filter" type="range" min="900" max="6500" step="100" value="6500" />
+            <span id="price-label">ate R$ 6.500</span>
+          </label>
+          <label>
+            Busca
+            <input id="search-filter" type="search" placeholder="Bairro, titulo ou cidade" />
+          </label>
+        </div>
+
+        <div id="property-grid" class="property-grid"></div>
+      </section>
+
+      <section id="landlord-view" class="view-section" aria-labelledby="landlord-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Para locadores</p>
+            <h2 id="landlord-title">Cadastrar imovel</h2>
+          </div>
+        </div>
+
+        <div class="landlord-layout">
+          <form id="property-form" class="property-form">
+            <input id="property-id" type="hidden" />
+
+            <label>
+              Titulo
+              <input id="title-input" required maxlength="80" placeholder="Apartamento iluminado perto do metro" />
+            </label>
+
+            <div class="form-row">
+              <label>
+                Cidade
+                <input id="city-input" required maxlength="40" placeholder="Fortaleza" />
+              </label>
+              <label>
+                Bairro
+                <input id="district-input" required maxlength="40" placeholder="Meireles" />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                Tipo
+                <select id="type-input" required>
+                  <option value="Apartamento">Apartamento</option>
+                  <option value="Casa">Casa</option>
+                  <option value="Kitnet">Kitnet</option>
+                  <option value="Studio">Studio</option>
+                </select>
+              </label>
+              <label>
+                Aluguel mensal
+                <input id="price-input" required type="number" min="300" step="50" placeholder="2500" />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                Quartos
+                <input id="bedrooms-input" required type="number" min="0" max="10" value="2" />
+              </label>
+              <label>
+                Banheiros
+                <input id="bathrooms-input" required type="number" min="1" max="10" value="1" />
+              </label>
+            </div>
+
+            <label>
+              Destaques
+              <input id="features-input" placeholder="Varanda, mobiliado, garagem" />
+            </label>
+
+            <label>
+              URL da foto
+              <input id="image-input" type="url" placeholder="https://..." />
+            </label>
+
+            <label>
+              Descricao
+              <textarea id="description-input" required rows="4" maxlength="220" placeholder="Descreva os principais pontos do imovel"></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button class="secondary-button" id="clear-form-button" type="button">Limpar</button>
+              <button class="primary-button" type="submit">Salvar imovel</button>
+            </div>
+          </form>
+
+          <aside class="owner-panel">
+            <h3>Meus imoveis</h3>
+            <div id="owner-list" class="owner-list"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
