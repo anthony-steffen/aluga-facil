@@ -1,28 +1,38 @@
-# Post para LinkedIn
+🚀 Aluga Fácil: Sistema Front-end para Cadastro e Visualização de Imóveis para Aluguel
 
-Desenvolvi o Aluga Facil, uma aplicação web para cadastro e visualização de imóveis para aluguel, com foco em Aparecida de Goiânia.
+Recentemente desenvolvi o Aluga Fácil, uma aplicação web criada para simular uma plataforma de aluguel de imóveis com foco em Aparecida de Goiânia.
 
-A ideia foi criar um MVP simples, mas demonstrável, pensando em dois públicos:
+O objetivo foi construir uma experiência simples e funcional para dois perfis de usuários: locadores que precisam cadastrar e gerenciar imóveis, e inquilinos que desejam visualizar opções disponíveis de forma clara, rápida e organizada.
 
-- Inquilinos que precisam encontrar imóveis com filtros claros.
-- Locadores que precisam cadastrar, editar e organizar seus anúncios.
+Principais funcionalidades implementadas:
 
-O que já foi implementado:
+✅ Vitrine de imóveis disponíveis para locação
+✅ Cadastro de imóveis por parte do locador
+✅ Edição e exclusão de imóveis cadastrados
+✅ Filtros por cidade, tipo de imóvel, valor máximo e busca textual
+✅ Exibição de informações como bairro, preço, quartos, banheiros e diferenciais
+✅ Persistência local utilizando localStorage
+✅ Migração automática dos dados demonstrativos
+✅ Interface moderna, responsiva e focada na experiência do usuário
 
-- Vitrine de imóveis disponíveis.
-- Filtros por cidade, tipo, valor máximo e busca textual.
-- Cadastro completo de imóvel pelo locador.
-- Edição e exclusão dos imóveis cadastrados.
-- Persistência local com localStorage.
-- Migração automática dos dados de demonstração.
-- Interface responsiva e moderna.
+Arquitetura e tecnologias:
 
-Também mantive o histórico de desenvolvimento organizado por commits em blocos de funcionalidade, para deixar o processo mais fácil de revisar.
+🔹 HTML5
+🔹 CSS3
+🔹 JavaScript
+🔹 LocalStorage
+🔹 Git e GitHub
+🔹 Design responsivo
 
-Esse projeto foi pensado como uma base para evoluir depois com autenticação, backend, upload de imagens, painel administrativo e integração com mapas.
+Durante o desenvolvimento, o foco foi aplicar boas práticas de organização de interface, separação de responsabilidades, experiência do usuário e versionamento por blocos de funcionalidade.
+
+Também adaptei os dados demonstrativos para o contexto de Aparecida de Goiânia, utilizando referências locais para tornar o projeto mais próximo da realidade da região e mais relevante para oportunidades no mercado goiano.
+
+Projetos como esse são uma excelente oportunidade para demonstrar fundamentos de front-end, construção de interfaces modernas, manipulação de dados no navegador, controle de estado simples e evolução incremental de produto.
+
+Feedbacks e sugestões são muito bem-vindos.
 
 Repositório:
 https://github.com/anthony-steffen/aluga-facil
 
-#frontend #javascript #webdevelopment #uxdesign #aparecidadegoiania #goias #portfolio #openToWork
-
+#HTML #CSS #JavaScript #FrontendDevelopment #WebDevelopment #UXDesign #ResponsiveDesign #GitHub #Portfolio #AparecidaDeGoiania #Goias #OpenToWork
