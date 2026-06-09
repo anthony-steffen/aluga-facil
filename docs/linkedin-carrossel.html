@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrossel LinkedIn - Aluga Facil</title>
+    <style>
+      :root {
+        --ink: #172026;
+        --muted: #5d6b78;
+        --paper: #f5f7fa;
+        --surface: #ffffff;
+        --line: #d8e0e8;
+        --blue: #176b87;
+        --blue-dark: #0f4c64;
+        --green: #2f7d57;
+        --orange: #d67d3e;
+        --red: #b94b3f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #dfe6ee;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      .deck {
+        display: grid;
+        gap: 28px;
+        justify-items: center;
+        padding: 32px;
+      }
+
+      .slide {
+        position: relative;
+        display: grid;
+        width: min(1080px, 100%);
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: 0 24px 70px rgba(30, 44, 60, 0.22);
+      }
+
+      .slide-content {
+        display: grid;
+        align-content: space-between;
+        gap: 28px;
+        padding: 72px;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 58px;
+        height: 58px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--blue);
+        color: #fff;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--orange);
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 840px;
+        font-size: 82px;
+        line-height: 0.95;
+      }
+
+      h2 {
+        max-width: 780px;
+        font-size: 66px;
+        line-height: 1;
+      }
+
+      .lead {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 32px;
+        line-height: 1.22;
+      }
+
+      .hero-band {
+        display: grid;
+        min-height: 300px;
+        grid-template-columns: 1fr 0.75fr;
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .mockup,
+      .panel,
+      .feature,
+      .metric,
+      .timeline-item {
+        border: 2px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .mockup {
+        display: grid;
+        align-content: space-between;
+        padding: 24px;
+      }
+
+      .mockup-top {
+        display: flex;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--line);
+      }
+
+      .mockup-card {
+        display: grid;
+        gap: 16px;
+      }
+
+      .mockup-image {
+        height: 150px;
+        border-radius: 8px;
+        background:
+          linear-gradient(140deg, rgba(23, 107, 135, 0.2), rgba(214, 125, 62, 0.25)),
+          #d8e6ee;
+      }
+
+      .mockup-line {
+        height: 18px;
+        border-radius: 999px;
+        background: #d8e0e8;
+      }
+
+      .mockup-line.short {
+        width: 58%;
+      }
+
+      .accent-panel {
+        display: grid;
+        align-content: center;
+        gap: 18px;
+        padding: 32px;
+        background: var(--blue-dark);
+        color: #fff;
+      }
+
+      .accent-panel strong {
+        font-size: 58px;
+        line-height: 1;
+      }
+
+      .accent-panel span {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 24px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        display: grid;
+        gap: 22px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .feature,
+      .metric,
+      .timeline-item {
+        display: grid;
+        gap: 16px;
+        padding: 28px;
+      }
+
+      .feature strong,
+      .timeline-item strong {
+        font-size: 30px;
+        line-height: 1.05;
+      }
+
+      .feature span,
+      .timeline-item span {
+        color: var(--muted);
+        font-size: 24px;
+        line-height: 1.22;
+      }
+
+      .icon {
+        display: grid;
+        width: 58px;
+        height: 58px;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 26px;
+        font-weight: 900;
+      }
+
+      .icon.blue {
+        background: var(--blue);
+      }
+
+      .icon.green {
+        background: var(--green);
+      }
+
+      .icon.orange {
+        background: var(--orange);
+      }
+
+      .icon.red {
+        background: var(--red);
+      }
+
+      .metric strong {
+        color: var(--blue-dark);
+        font-size: 54px;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 24px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .timeline-item {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+      }
+
+      .step-number {
+        display: grid;
+        width: 54px;
+        height: 54px;
+        place-items: center;
+        border-radius: 8px;
+        background: #e8f1f4;
+        color: var(--blue-dark);
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .footer-note {
+        color: var(--muted);
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .dark {
+        background: var(--blue-dark);
+        color: #fff;
+      }
+
+      .dark .brand-row,
+      .dark .lead,
+      .dark .footer-note {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .dark .eyebrow {
+        color: #ffd0ad;
+      }
+
+      .dark .metric {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .dark .metric strong,
+      .dark .metric span {
+        color: #fff;
+      }
+
+      .cta {
+        display: grid;
+        gap: 22px;
+      }
+
+      .cta a {
+        color: #fff;
+        font-size: 34px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .deck {
+          display: block;
+          padding: 0;
+        }
+
+        .slide {
+          width: 100vw;
+          min-height: 100vh;
+          margin: 0;
+          break-after: page;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide dark">
+        <div class="slide-content">
+          <div class="brand-row">
+            <div class="brand">
+              <span class="brand-mark">AF</span>
+              <span>Aluga Facil</span>
+            </div>
+            <span>Projeto Front-end</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">Case de produto</p>
+            <h1>Sistema para aluguel de imóveis em Aparecida de Goiânia</h1>
+          </div>
+
+          <p class="lead">
+            Uma aplicação web para conectar locadores e inquilinos com uma experiência simples,
+            moderna e focada no mercado local.
+          </p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>01</span>
+            <span>Problema</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">O desafio</p>
+            <h2>Buscar imóvel ainda costuma ser confuso.</h2>
+          </div>
+
+          <div class="grid-3">
+            <div class="feature">
+              <span class="icon red">!</span>
+              <strong>Informações espalhadas</strong>
+              <span>Dados de preço, bairro e características nem sempre aparecem de forma clara.</span>
+            </div>
+            <div class="feature">
+              <span class="icon orange">?</span>
+              <strong>Cadastro sem padrão</strong>
+              <span>Locadores precisam organizar detalhes para apresentar melhor seus imóveis.</span>
+            </div>
+            <div class="feature">
+              <span class="icon blue">#</span>
+              <strong>Busca pouco local</strong>
+              <span>O usuário precisa enxergar opções que façam sentido para sua região.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>02</span>
+            <span>Solução</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">A proposta</p>
+            <h2>Dois fluxos principais no mesmo produto.</h2>
+          </div>
+
+          <div class="grid-2">
+            <div class="feature">
+              <span class="icon green">I</span>
+              <strong>Inquilino</strong>
+              <span>Visualiza imóveis disponíveis, filtra por cidade, tipo, valor máximo e busca textual.</span>
+            </div>
+            <div class="feature">
+              <span class="icon blue">L</span>
+              <strong>Locador</strong>
+              <span>Cadastra, edita e remove imóveis com dados estruturados e imagem de destaque.</span>
+            </div>
+          </div>
+
+          <p class="footer-note">Menos atrito para anunciar. Mais clareza para decidir.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>03</span>
+            <span>Interface</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">Experiência visual</p>
+            <h2>Layout moderno, responsivo e direto ao ponto.</h2>
+          </div>
+
+          <div class="hero-band">
+            <div class="mockup">
+              <div class="mockup-top">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <div class="mockup-card">
+                <div class="mockup-image"></div>
+                <div class="mockup-line"></div>
+                <div class="mockup-line short"></div>
+              </div>
+            </div>
+            <div class="accent-panel">
+              <strong>100%</strong>
+              <span>front-end funcional, sem dependências obrigatórias para rodar a primeira versão.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>04</span>
+            <span>Funcionalidades</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">O que foi implementado</p>
+            <h2>Um MVP navegável e demonstrável.</h2>
+          </div>
+
+          <div class="grid-3">
+            <div class="feature">
+              <span class="icon blue">F</span>
+              <strong>Filtros de busca</strong>
+              <span>Cidade, tipo, preço e termo livre para encontrar imóveis rapidamente.</span>
+            </div>
+            <div class="feature">
+              <span class="icon green">C</span>
+              <strong>Cadastro completo</strong>
+              <span>Título, bairro, cidade, tipo, preço, quartos, banheiros, foto e descrição.</span>
+            </div>
+            <div class="feature">
+              <span class="icon orange">E</span>
+              <strong>Edição e exclusão</strong>
+              <span>Gestão dos imóveis cadastrados pelo locador direto na interface.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>05</span>
+            <span>Localização</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">Contexto regional</p>
+            <h2>Dados pensados para Aparecida de Goiânia.</h2>
+          </div>
+
+          <div class="grid-3">
+            <div class="metric">
+              <strong>Garavelo</strong>
+              <span>Apartamento completo com garagem e boa oferta de serviços.</span>
+            </div>
+            <div class="metric">
+              <strong>Vila Brasília</strong>
+              <span>Casa ampla próxima ao Aparecida Shopping.</span>
+            </div>
+            <div class="metric">
+              <strong>Nova Era</strong>
+              <span>Studio funcional perto do Buriti Shopping.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-content">
+          <div class="brand-row">
+            <span>06</span>
+            <span>Processo</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">Como desenvolvi</p>
+            <h2>Entrega organizada por blocos de funcionalidade.</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="step-number">1</span>
+              <div>
+                <strong>Estrutura inicial</strong>
+                <span>README, organização do repositório e base do app.</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="step-number">2</span>
+              <div>
+                <strong>Interface</strong>
+                <span>Layout, navegação por perfil, filtros e formulário.</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="step-number">3</span>
+              <div>
+                <strong>Funcionalidades</strong>
+                <span>Cadastro, busca, edição, exclusão, persistência e migração dos dados demo.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide dark">
+        <div class="slide-content">
+          <div class="brand-row">
+            <div class="brand">
+              <span class="brand-mark">AF</span>
+              <span>Aluga Facil</span>
+            </div>
+            <span>Obrigado</span>
+          </div>
+
+          <div class="cta">
+            <p class="eyebrow">Próximos passos</p>
+            <h2>Autenticação, backend, upload de imagens e painel administrativo.</h2>
+            <a href="https://github.com/anthony-steffen/aluga-facil">
+              github.com/anthony-steffen/aluga-facil
+            </a>
+          </div>
+
+          <p class="lead">
+            Projeto criado para demonstrar visão de produto, cuidado com UX e evolução incremental.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
