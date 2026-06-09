@@ -1,4 +1,6 @@
 const storageKey = "aluga-facil-properties";
+const seedVersionKey = "aluga-facil-seed-version";
+const seedVersion = "aparecida-goiania-v1";
 
 const state = {
   properties: [],
@@ -25,7 +27,7 @@ const fallbackImages = [
 function getInitialProperties() {
   return [
     {
-      id: crypto.randomUUID(),
+      id: "demo-setor-garavelo",
       title: "Apartamento completo no Setor Garavelo",
       city: "Aparecida de Goiania",
       district: "Setor Garavelo",
@@ -38,7 +40,7 @@ function getInitialProperties() {
       description: "Ambientes bem iluminados, condominio com portaria e acesso rapido a comercio e servicos.",
     },
     {
-      id: crypto.randomUUID(),
+      id: "demo-vila-brasilia",
       title: "Casa ampla proxima ao Aparecida Shopping",
       city: "Aparecida de Goiania",
       district: "Vila Brasilia",
@@ -51,7 +53,7 @@ function getInitialProperties() {
       description: "Casa ventilada para familias que buscam espaco, privacidade e boa conexao com Goiania.",
     },
     {
-      id: crypto.randomUUID(),
+      id: "demo-jardim-nova-era",
       title: "Studio funcional perto do Buriti Shopping",
       city: "Aparecida de Goiania",
       district: "Jardim Nova Era",
@@ -66,20 +68,61 @@ function getInitialProperties() {
   ];
 }
 
+function isLegacyDemoProperty(property) {
+  const legacyTitles = new Set([
+    "Apartamento completo perto da Beira Mar",
+    "Casa ampla com quintal",
+    "Studio funcional em area central",
+  ]);
+  const legacyCities = new Set(["Fortaleza", "Eusebio"]);
+
+  return legacyTitles.has(property.title) || legacyCities.has(property.city);
+}
+
+function isCurrentDemoProperty(property) {
+  return String(property.id || "").startsWith("demo-");
+}
+
+function migrateSeedProperties(savedProperties) {
+  const customProperties = savedProperties.filter(
+    (property) => !isLegacyDemoProperty(property) && !isCurrentDemoProperty(property),
+  );
+
+  state.properties = [...getInitialProperties(), ...customProperties];
+  saveProperties();
+  localStorage.setItem(seedVersionKey, seedVersion);
+}
+
 function loadProperties() {
   const saved = localStorage.getItem(storageKey);
 
   if (!saved) {
     state.properties = getInitialProperties();
     saveProperties();
+    localStorage.setItem(seedVersionKey, seedVersion);
     return;
   }
 
   try {
-    state.properties = JSON.parse(saved);
+    const savedProperties = JSON.parse(saved);
+    if (!Array.isArray(savedProperties)) {
+      throw new Error("Invalid saved properties");
+    }
+
+    const needsSeedMigration =
+      localStorage.getItem(seedVersionKey) !== seedVersion ||
+      savedProperties.some(isLegacyDemoProperty);
+
+    if (needsSeedMigration) {
+      migrateSeedProperties(savedProperties);
+      return;
+    }
+
+    state.properties = savedProperties;
   } catch {
     state.properties = getInitialProperties();
     saveProperties();
+    localStorage.setItem(seedVersionKey, seedVersion);
   }
 }
 
