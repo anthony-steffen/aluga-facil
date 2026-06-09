@@ -13,9 +13,4 @@ O projeto atende dois perfis principais:
 
 Abra o arquivo `index.html` no navegador.
 
-Como a primeira versao e uma aplicacao estatica, nao ha instalacao de dependencias obrigatoria.
-
-## Padrao de commits
-
-Os commits devem ser feitos por blocos de funcionalidade, mantendo historico facil de revisar.
-
+Como a primeira versao apenas para teste de conhecimento trata-se de uma aplicacao estatica, nao ha instalacao de dependencias obrigatoria.
